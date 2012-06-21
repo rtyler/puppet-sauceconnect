@@ -1,4 +1,4 @@
-class sauceconnect {
+class sauceconnect($username="", $apikey="") {
   $dir = '/usr/share/sauce'
 
   file {
@@ -13,6 +13,8 @@ class sauceconnect {
 
   class {
     "sauceconnect::${osfamily}" : ;
-    'sauceconnect::daemon' : ;
+    'sauceconnect::daemon' :
+      username => $username,
+      apikey   => $apikey;
   }
 }
