@@ -4,5 +4,7 @@
 Blimpy.fleet do |fleet|
   fleet.add(:aws) do |ship|
     ship.name = 'sauceconnector'
+    ship.livery = :cwd
+    ship.flavor = 'm1.small'
   end
 end
