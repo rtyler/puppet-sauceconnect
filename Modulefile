@@ -1,11 +1,8 @@
 name    'rtyler-sauceconnect'
-version '0.0.1'
-source 'UNKNOWN'
+version '1.0.0'
+source 'https://github.com/rtyler/puppet-sauceconnect'
 author 'rtyler'
 license 'Apache License, Version 2.0'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
-
-## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
+summary 'Simple module for managing a machine-wide Sauce Connect tunnel'
+description 'This is the sauceconnect module, it will manage running a Sauce Connect tunnel daemon on a host for you.'
+project_page 'https://github.com/rtyler/puppet-sauceconnect'
