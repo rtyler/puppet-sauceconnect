@@ -5,13 +5,6 @@ describe 'sauceconnect' do
     {:osfamily => 'debian'}
   end
 
-  it 'should install the sauce gem' do
-    should contain_package('sauce').with({
-      'provider' => 'gem',
-      'ensure'   => 'present'
-    })
-  end
-
   context 'on Debian family systems' do
     let(:facts) do
       { :osfamily => 'debian' }
