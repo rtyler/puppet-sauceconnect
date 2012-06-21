@@ -5,6 +5,23 @@ describe 'sauceconnect' do
     {:osfamily => 'debian'}
   end
 
+  it 'should create a directory for the jar file' do
+    should contain_file('/usr/share/sauce').with({
+      'ensure' => 'directory'
+    })
+  end
+
+  it 'should place the jar file' do
+    should contain_file('/usr/share/sauce/Sauce-Connect.jar').with({
+      'ensure'  => 'present',
+      'require' => 'File[/usr/share/sauce]'
+    })
+  end
+
+  it 'should include the daemon class' do
+    should include_class('sauceconnect::daemon')
+  end
+
   context 'on Debian family systems' do
     let(:facts) do
       { :osfamily => 'debian' }
