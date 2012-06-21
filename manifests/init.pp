@@ -4,4 +4,9 @@ class sauceconnect {
       ensure   => present,
       provider => gem;
   }
+
+
+  class {
+    "sauceconnect::${osfamily}" : ;
+  }
 }
