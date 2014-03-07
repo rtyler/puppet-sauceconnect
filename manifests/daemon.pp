@@ -8,13 +8,13 @@ class sauceconnect::daemon($username, $apikey) {
     '/etc/default/sauce-connect' :
       ensure  => present,
       content => "
-JAVA=/usr/lib/jvm/java-6-openjdk/jre/bin/java
-SAUCE_CONNECT=/usr/share/sauce/Sauce-Connect.jar
+SAUCE_CONNECT=/usr/share/sauce/sc
 API_USER=${username}
 API_KEY=${apikey}
 USERNAME=
 GROUP=
 LOG_DIR=${logdir}
+LOG_FILE=${logdir}/sc.log
 ";
 
     '/etc/init.d/sauce-connect' :

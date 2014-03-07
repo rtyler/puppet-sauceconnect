@@ -5,10 +5,10 @@ class sauceconnect($username="", $apikey="") {
     $dir :
       ensure => directory;
 
-    "$dir/Sauce-Connect.jar" :
+    "$dir/sc" :
       ensure  => present,
       require => File[$dir],
-      source  => 'puppet:///modules/sauceconnect/Sauce-Connect.jar';
+      source  => 'puppet:///modules/sauceconnect/sc';
   }
 
   class {
