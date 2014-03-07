@@ -29,9 +29,8 @@ DAEMON=""
 # You must configure there your API KEY too
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
-DAEMON="$JAVA"
-DAEMON_ARGS=" -jar $SAUCE_CONNECT $API_USER $API_KEY"
-
+DAEMON="$SAUCE_CONNECT"
+DAEMON_ARGS="--logfile $LOG_FILE -u $API_USER -k $API_KEY"
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
@@ -53,11 +52,15 @@ do_start()
     #   0 if daemon has been started
     #   1 if daemon was already running
     #   2 if daemon could not be started
-    start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
-        || return 1
-    start-stop-daemon -b -m -c $USERNAME:$GROUP --chdir $LOG_DIR --start --quiet --pidfile $PIDFILE --exec $DAEMON -- \
+    #start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON --test > /dev/null \
+    #      || return 1
+
+    CUSER=""
+    [ -n "$USERNAME" ] && [ -n "$GROUP"] && CUSER="-c $USERNAME:$GROUP"
+    start-stop-daemon -b -m --chdir $LOG_DIR $CUSER --start --quiet --pidfile $PIDFILE --exec $DAEMON -- \
         $DAEMON_ARGS \
         || return 2
+    sleep 10
     # Add code here, if necessary, that waits for the process to be ready
     # to handle requests from services started subsequently which depend
     # on this one.  As a last resort, sleep for some time.

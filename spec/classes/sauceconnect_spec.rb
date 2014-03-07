@@ -5,14 +5,14 @@ describe 'sauceconnect' do
     {:osfamily => 'debian'}
   end
 
-  it 'should create a directory for the jar file' do
+  it 'should create a directory for the sc binary' do
     should contain_file('/usr/share/sauce').with({
       'ensure' => 'directory'
     })
   end
 
-  it 'should place the jar file' do
-    should contain_file('/usr/share/sauce/Sauce-Connect.jar').with({
+  it 'should place the sc binary' do
+    should contain_file('/usr/share/sauce/sc').with({
       'ensure'  => 'present',
       'require' => 'File[/usr/share/sauce]'
     })
