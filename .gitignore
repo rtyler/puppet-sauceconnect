@@ -1,3 +1,4 @@
 pkg
 .rvmrc
 Gemfile.lock
+.ruby-*
