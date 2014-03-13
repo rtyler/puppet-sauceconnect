@@ -1,5 +1,5 @@
 name    'rtyler-sauceconnect'
-version '2.0.0'
+version '2.1.0'
 source 'https://github.com/rtyler/puppet-sauceconnect'
 author 'rtyler'
 license 'Apache License, Version 2.0'
